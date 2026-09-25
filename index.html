@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechConnect Việt Nam 2026 - Trang sự kiện</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+ 
+    :root {
+      --color-bg: #f6f7fb;
+      --color-surface: #ffffff;
+      --color-text: #1b1e2b;
+      --color-text-muted: #5c6070;
+      --color-primary: #2f54eb;
+      --color-primary-dark: #1e3fc4;
+      --color-accent: #00b8a9;
+      --color-border: #e3e6ed;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #10131a;
+      --color-surface: #1b1f2a;
+      --color-text: #e7eaf0;
+      --color-text-muted: #9aa0b4;
+      --color-primary: #6e8bff;
+      --color-primary-dark: #4c6fff;
+      --color-accent: #2fd9c4;
+      --color-border: #2a2f3d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1, h2, h3 { font-family: 'Sora', sans-serif; font-weight: 700; }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+  
+    .btn-primary, .btn-secondary {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: #ffffff;
+    }
+    .btn-primary:hover { background-color: var(--color-primary-dark); }
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-text);
+      border-color: var(--color-border);
+    }
+    .btn-secondary:hover { background-color: var(--color-border); }
+
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 16px 24px;
+    }
+    .logo {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--color-primary);
+    }
+    .main-nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .main-nav a {
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--color-text-muted);
+    }
+    .main-nav a:hover { color: var(--color-primary); }
+
+    .btn-theme {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+   
+    .banner {
+      background-image:
+        linear-gradient(rgba(10, 12, 20, 0.55), rgba(10, 12, 20, 0.65)),
+        url('https://picsum.photos/seed/techsummit/1600/700');
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+    }
+    .banner-content {
+      padding: 100px 24px;
+      text-align: center;
+    }
+    .banner-content h1 {
+      font-size: 42px;
+      margin-bottom: 16px;
+    }
+    .banner-meta {
+      font-size: 18px;
+      margin-bottom: 28px;
+      color: #e6e8f0;
+    }
+
+    .programs { padding: 72px 0; }
+    .programs h2 {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .program-card {
+      display: flex;
+      gap: 16px;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .speaker-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .program-time {
+      display: inline-block;
+      background-color: var(--color-accent);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 12px;
+      margin-bottom: 6px;
+    }
+    .program-title { font-size: 17px; margin-bottom: 4px; }
+    .program-speaker { font-size: 14px; color: var(--color-text-muted); }
+
+
+    .register {
+      background-color: var(--color-surface);
+      padding: 72px 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .register-inner { max-width: 640px; }
+    .register h2 {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+    .form-group .hint {
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+    .required { color: #e5484d; }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="tel"],
+    .form-group input[type="date"],
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 15px;
+    }
+    .form-group textarea { resize: vertical; }
+
+    .radio-group, .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .checkbox-group { flex-direction: column; gap: 8px; }
+    .radio-option, .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 400;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .site-footer {
+      padding: 40px 0;
+      background-color: var(--color-bg);
+    }
+    .footer-inner p {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+    }
+    .footer-inner a { color: var(--color-primary); }
+    .copyright {
+      margin-top: 16px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .program-grid { grid-template-columns: 1fr; }
+      .banner-content { padding: 64px 20px; }
+      .banner-content h1 { font-size: 30px; }
+      .header-inner { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#trang-chu" class="logo"> TechConnect </a>
+
+      <nav class="main-nav">
+        <a href="#trang-chu">Trang chủ</a>
+        <a href="#chuong-trinh">Chương trình</a>
+        <a href="#chuong-trinh">Diễn giả</a>
+        <a href="#footer">Địa điểm</a>
+        <a href="#dang-ky">Đăng ký</a>
+      </nav>
+
+    
+      <button id="themeToggle" class="btn-theme" onclick="toggleTheme()">🌙 Dark Mode</button>
+    </div>
+  </header>
+
+  <section id="trang-chu" class="banner">
+    <div class="banner-content">
+      <h1>TechConnect Việt Nam 2026</h1>
+      <p class="banner-meta">25-30/9/2026 tại Trung tâm Hội nghị Quốc gia, Hà Nội</p>
+      <a href="#dang-ky" class="btn-primary">Đăng ký tham dự</a>
+    </div>
+  </section>
+
+  <section id="chuong-trinh" class="programs">
+    <div class="container">
+      <h2>Chương trình sự kiện</h2>
+
+      <div class="program-grid">
+        <article class="program-card">
+          <img class="speaker-avatar" src="https://i.pravatar.cc/100?img=12" alt="Ảnh diễn giả Nguyễn Văn A">
+          <div class="program-info">
+            <span class="program-time">09:00</span>
+            <h3 class="program-title">Khai mạc &amp; Xu hướng công nghệ 2026</h3>
+            <p class="program-speaker">Diễn giả: Nguyễn Văn A</p>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <img class="speaker-avatar" src="https://i.pravatar.cc/100?img=47" alt="Ảnh diễn giả Trần Thị B">
+          <div class="program-info">
+            <span class="program-time">10:00</span>
+            <h3 class="program-title">Trí tuệ nhân tạo tạo sinh trong doanh nghiệp</h3>
+            <p class="program-speaker">Diễn giả: Trần Thị B</p>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <img class="speaker-avatar" src="https://i.pravatar.cc/100?img=33" alt="Ảnh diễn giả Lê Văn C">
+          <div class="program-info">
+            <span class="program-time">11:00</span>
+            <h3 class="program-title">Bảo mật ứng dụng trên nền tảng đám mây</h3>
+            <p class="program-speaker">Diễn giả: Lê Văn C</p>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <img class="speaker-avatar" src="https://i.pravatar.cc/100?img=25" alt="Ảnh diễn giả Phạm Thị D">
+          <div class="program-info">
+            <span class="program-time">13:30</span>
+            <h3 class="program-title">Xây dựng sản phẩm với Low-code / No-code</h3>
+            <p class="program-speaker">Diễn giả: Phạm Thị D</p>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <img class="speaker-avatar" src="https://i.pravatar.cc/100?img=8" alt="Ảnh diễn giả Hoàng Văn E">
+          <div class="program-info">
+            <span class="program-time">14:30</span>
+            <h3 class="program-title">Blockchain và tương lai của tài chính số</h3>
+            <p class="program-speaker">Diễn giả: Hoàng Văn E</p>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <img class="speaker-avatar" src="https://i.pravatar.cc/100?img=56" alt="Ảnh diễn giả Đỗ Thị F">
+          <div class="program-info">
+            <span class="program-time">15:30</span>
+            <h3 class="program-title">Toạ đàm: Định hướng sự nghiệp ngành công nghệ</h3>
+            <p class="program-speaker">Diễn giả: Đỗ Thị F</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="dang-ky" class="register">
+    <div class="container register-inner">
+      <h2>Đăng ký tham dự</h2>
+
+      <form id="registerForm">
+
+        <div class="form-group">
+          <label for="hoten">Họ và tên <span class="required">*</span></label>
+          <input type="text" id="hoten" name="hoten" placeholder="Nguyễn Văn A" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" placeholder="ban@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="dienthoai">Điện thoại <span class="required">*</span></label>
+          <input type="tel" id="dienthoai" name="dienthoai" placeholder="0901234567" required>
+        </div>
+
+        <div class="form-group">
+          <label for="ngaysinh">Ngày sinh</label>
+          <input type="date" id="ngaysinh" name="ngaysinh">
+        </div>
+
+        <div class="form-group">
+          <label for="donvi">Đơn vị công tác</label>
+          <input type="text" id="donvi" name="donvi" placeholder="Trường / Công ty đang học - làm việc">
+        </div>
+
+        <div class="form-group">
+          <label>Vai trò <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="vaitro" value="Sinh viên" required> Sinh viên</label>
+            <label class="radio-option"><input type="radio" name="vaitro" value="Đi làm"> Đi làm</label>
+            <label class="radio-option"><input type="radio" name="vaitro" value="Giảng viên"> Giảng viên</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="loaive">Loại vé <span class="required">*</span></label>
+          <select id="loaive" name="loaive" required>
+            <option value="" disabled selected>-- Chọn loại vé --</option>
+            <option value="Thường">Thường</option>
+            <option value="VIP">VIP</option>
+            <option value="Sinh viên">Sinh viên</option>
+            <option value="Nhóm">Nhóm</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Phiên muốn tham dự <span class="hint">(chọn tối thiểu 3 phiên)</span></label>
+          <div class="checkbox-group">
+            <label class="checkbox-option"><input type="checkbox" name="phien" value="Khai mạc & Xu hướng công nghệ 2026"> Khai mạc & Xu hướng công nghệ 2026</label>
+            <label class="checkbox-option"><input type="checkbox" name="phien" value="AI tạo sinh trong doanh nghiệp"> AI tạo sinh trong doanh nghiệp</label>
+            <label class="checkbox-option"><input type="checkbox" name="phien" value="Bảo mật ứng dụng đám mây"> Bảo mật ứng dụng đám mây</label>
+            <label class="checkbox-option"><input type="checkbox" name="phien" value="Low-code / No-code"> Low-code / No-code</label>
+            <label class="checkbox-option"><input type="checkbox" name="phien" value="Blockchain và tài chính số"> Blockchain và tài chính số</label>
+            <label class="checkbox-option"><input type="checkbox" name="phien" value="Toạ đàm định hướng sự nghiệp"> Toạ đàm định hướng sự nghiệp</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cauhoi">Câu hỏi cho diễn giả</label>
+          <textarea id="cauhoi" name="cauhoi" rows="4" placeholder="Nhập câu hỏi bạn muốn gửi tới diễn giả (nếu có)"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Đăng ký</button>
+          <button type="reset" class="btn-secondary">Hủy</button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+
+  <footer id="footer" class="site-footer">
+    <div class="container footer-inner">
+      <p><strong>Đơn vị tổ chức:</strong> Ban tổ chức TechConnect Summit</p>
+      <p><strong>Địa điểm tổ chức:</strong> Trung tâm Hội nghị Quốc gia, số 57 Phạm Hùng, Nam Từ Liêm, Hà Nội</p>
+      <p><strong>Email liên hệ:</strong> <a href="mailto:contact@techconnect.vn">contact@techconnect.vn</a></p>
+      <p class="copyright">© 2026 TechConnect Summit. Bảo lưu mọi quyền.</p>
+    </div>
+  </footer>
+
+  <script>
+
+    function toggleTheme() {
+      var html = document.documentElement;
+      var dangToiToi = html.getAttribute('data-theme') === 'dark'; 
+      var themeMoi = dangToiToi ? 'light' : 'dark';
+      html.setAttribute('data-theme', themeMoi);
+
+      var nut = document.getElementById('themeToggle');
+      nut.textContent = themeMoi === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+
+
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      e.preventDefault(); 
+
+      var soPhienDaChon = document.querySelectorAll('input[name="phien"]:checked').length;
+
+      if (soPhienDaChon < 3) {
+        alert('Vui lòng chọn tối thiểu 3 phiên muốn tham dự!');
+        return;
+      }
+
+      alert('Đăng ký thành công! Cảm ơn bạn đã đăng ký tham dự TechConnect Summit 2026.');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>
